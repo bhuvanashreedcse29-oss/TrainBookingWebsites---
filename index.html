@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrainBooking - Book Your Train Tickets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-page show">
+        <div class="login-container">
+            <div class="login-box">
+                <div class="login-header">
+                    <span class="login-icon">🚂</span>
+                    <h1>TrainBooking</h1>
+                    <p>Your Journey Begins Here</p>
+                </div>
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input 
+                            type="email" 
+                            id="loginEmail" 
+                            placeholder="Enter your email" 
+                            required
+                        >
+                        <small class="demo-text">Demo: user@trainbooking.com</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input 
+                            type="password" 
+                            id="loginPassword" 
+                            placeholder="Enter your password" 
+                            required
+                        >
+                        <small class="demo-text">Demo: password123</small>
+                    </div>
+                    <button type="submit" class="login-btn">Sign In</button>
+                </form>
+                <div class="demo-login">
+                    <p>Quick Login:</p>
+                    <button type="button" class="demo-btn" id="demoLoginBtn">Use Demo Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" style="display: none;">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚂</span>
+                TrainBooking
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link" data-section="home">Home</a>
+                <a href="#" class="nav-link" data-section="book">Book Ticket</a>
+                <a href="#" class="nav-link" data-section="trains">Available Trains</a>
+                <a href="#" class="nav-link" data-section="status">Live Status</a>
+                <a href="#" class="nav-link" data-section="bookings">My Bookings</a>
+                <div class="user-info">
+                    <span id="userEmail" class="user-email"></span>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Home Section -->
+        <section id="home" class="section home-section active">
+            <div class="home-content">
+                <div class="hero">
+                    <h1 class="hero-title">Journey Beyond Boundaries</h1>
+                    <p class="hero-subtitle">Book your train tickets easily with TrainBooking</p>
+                    <button class="cta-button" data-section="book">Start Booking Now</button>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🎫</span>
+                        <h3>Easy Booking</h3>
+                        <p>Search and book tickets in seconds</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">💺</span>
+                        <h3>Choose Seats</h3>
+                        <p>Visual seat selection with real-time updates</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📍</span>
+                        <h3>Live Tracking</h3>
+                        <p>Track your train in real-time</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🍔</span>
+                        <h3>Food & Snacks</h3>
+                        <p>Available options on select trains</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Ticket Section -->
+        <section id="book" class="section book-section">
+            <div class="section-container">
+                <h2>Book Your Train Ticket</h2>
+                <div class="search-container">
+                    <form id="searchForm" class="search-form">
+                        <div class="form-group">
+                            <label for="source">From</label>
+                            <input 
+                                type="text" 
+                                id="source" 
+                                placeholder="Select source city..." 
+                                list="cities"
+                                required
+                            >
+                            <datalist id="cities">
+                                <option value="Mumbai">
+                                <option value="Delhi">
+                                <option value="Bangalore">
+                                <option value="Hyderabad">
+                                <option value="Chennai">
+                                <option value="Kolkata">
+                                <option value="Pune">
+                                <option value="Ahmedabad">
+                            </datalist>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destination">To</label>
+                            <input 
+                                type="text" 
+                                id="destination" 
+                                placeholder="Select destination city..." 
+                                list="cities"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Date of Journey</label>
+                            <input type="date" id="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="class">Class Type</label>
+                            <select id="class">
+                                <option value="">All Classes</option>
+                                <option value="Sleeper">Sleeper</option>
+                                <option value="AC">AC</option>
+                                <option value="General">General</option>
+                                <option value="First">First Class</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="search-btn">Search Trains</button>
+                    </form>
+                </div>
+
+                <div id="searchResults" class="search-results">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Available Trains Section -->
+        <section id="trains" class="section trains-section">
+            <div class="section-container">
+                <h2>All Available Trains</h2>
+                <div id="trainsGrid" class="trains-grid">
+                    <!-- Trains will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Train Status Section -->
+        <section id="status" class="section status-section">
+            <div class="section-container">
+                <h2>Live Train Tracking</h2>
+                <div class="status-search">
+                    <input 
+                        type="text" 
+                        id="trainNumber" 
+                        placeholder="Enter train number..." 
+                        class="search-input"
+                    >
+                    <button id="trackBtn" class="search-btn">Track Train</button>
+                </div>
+                <div id="trackingInfo" class="tracking-info">
+                    <!-- Tracking info will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- My Bookings Section -->
+        <section id="bookings" class="section bookings-section">
+            <div class="section-container">
+                <h2>My Bookings</h2>
+                <div id="bookingsList" class="bookings-list">
+                    <!-- Bookings will be populated here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal for Seat Selection -->
+    <div id="seatModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Select Your Seats</h3>
+            <div class="seat-selection">
+                <div id="seatContainer" class="seat-container">
+                    <!-- Seats will be generated here -->
+                </div>
+                <div class="seat-info">
+                    <div class="seat-legend">
+                        <div class="legend-item">
+                            <div class="seat available"></div>
+                            <span>Available</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="seat booked"></div>
+                            <span>Booked</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="seat selected"></div>
+                            <span>Selected</span>
+                        </div>
+                    </div>
+                    <div class="passenger-info">
+                        <h4>Passenger Details</h4>
+                        <form id="passengerForm">
+                            <div class="form-group">
+                                <label for="passengerName">Passenger Name</label>
+                                <input type="text" id="passengerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passengerEmail">Email</label>
+                                <input type="email" id="passengerEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passengerPhone">Phone Number</label>
+                                <input type="tel" id="passengerPhone" required>
+                            </div>
+                            <div id="selectedSeats" class="selected-seats-info"></div>
+                            <button type="submit" class="confirm-btn">Confirm Booking</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content confirmation-modal">
+            <div id="confirmationContent" class="confirmation-content">
+                <!-- Confirmation content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
